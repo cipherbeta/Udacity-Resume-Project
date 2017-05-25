@@ -11,7 +11,7 @@ var bio = {
     "blog": ""
   },
   "biopic": "images/biopic.jpg",
-  "welcome": "My philosophy is people before profit.",
+  "welcomeMessage": "My philosophy is people before profit.",
   "skills": ["HTML", "CSS", "JS", "Graphic Design", "Customer Care"]
 };
 

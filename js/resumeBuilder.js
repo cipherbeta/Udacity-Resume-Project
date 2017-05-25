@@ -28,7 +28,7 @@ bio.display = function() {
     insertData(HTMLbioPic, bio.biopic, "#header", "append");
   }
 
-  if (emptyCheck(bio.welcome)) {
+  if (emptyCheck(bio.welcomeMessage)) {
     insertData(HTMLwelcomeMsg, bio.welcome, "#header", "append");
   }
   // Append list of skills to header
@@ -38,35 +38,39 @@ bio.display = function() {
       insertData(HTMLskills, bio.skills[skill], "#skills", "append");
     }
   }
+  //As our contacts are going in more than one place, create the function to apply at a specific append location
+  bio.contacts.display = function(appendLocation) {
+
+    if (emptyCheck(bio.contacts.mobile)) {
+      insertData(HTMLmobile, bio.contacts.mobile, appendLocation, "append");
+    }
+
+    if (emptyCheck(bio.contacts.email)) {
+      insertData(HTMLemail, bio.contacts.email, appendLocation, "append");
+    }
+
+    if (emptyCheck(bio.contacts.twitter)) {
+      insertData(HTMLtwitter, bio.contacts.twitter, appendLocation, "append");
+    }
+
+    if (emptyCheck(bio.contacts.github)); {
+      insertData(HTMLgithub, bio.contacts.github, appendLocation, "append");
+    }
+
+    if (emptyCheck(bio.contacts.blog)) {
+      insertData(HTMLblog, bio.contacts.blog, appendLocation, "append");
+    }
+
+    if (emptyCheck(bio.contacts.mobile)) {
+      insertData(HTMLlocation, bio.contacts.location, appendLocation, "append");
+    }
+  };
+  // Call bio.contact.display at the specific locations we want
+  bio.contacts.display("#topContacts");
+  bio.contacts.display("#footerContacts");
+
 };
 
-// Add .display function to bio.contacts for calling later. One var for appendLocation so we can put it where we want.
-bio.contacts.display = function(appendLocation) {
-
-  if (emptyCheck(bio.contacts.mobile)) {
-    insertData(HTMLmobile, bio.contacts.mobile, appendLocation, "append");
-  }
-
-  if (emptyCheck(bio.contacts.email)) {
-    insertData(HTMLemail, bio.contacts.email, appendLocation, "append");
-  }
-
-  if (emptyCheck(bio.contacts.twitter)) {
-    insertData(HTMLtwitter, bio.contacts.twitter, appendLocation, "append");
-  }
-
-  if (emptyCheck(bio.contacts.github)); {
-    insertData(HTMLgithub, bio.contacts.github, appendLocation, "append");
-  }
-
-  if (emptyCheck(bio.contacts.blog)) {
-    insertData(HTMLblog, bio.contacts.blog, appendLocation, "append");
-  }
-
-  if (emptyCheck(bio.contacts.mobile)) {
-    insertData(HTMLlocation, bio.contacts.location, appendLocation, "append");
-  }
-};
 
 // Add .display function to our job history so we can call it later.
 work.display = function() {
@@ -180,9 +184,6 @@ var mapDisplay = function() {
 // Display Bio info
 bio.display();
 
-// Display contact information in header
-bio.contacts.display("#topContacts");
-
 // Display work information
 work.display();
 
@@ -194,6 +195,3 @@ education.display();
 
 // Append map div
 mapDisplay();
-
-// Display contact information in footer
-bio.contacts.display("#footerContacts");
